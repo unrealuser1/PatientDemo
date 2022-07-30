@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
+import androidx.core.splashscreen.SplashScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Toast;
+
+import com.example.patientdemo.roomDB.Database;
 
 import java.util.concurrent.Executor;
 
@@ -15,12 +19,34 @@ public class WhileAuth extends AppCompatActivity {
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
+    Database db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_while_auth);
-        biometricAuth();
         getSupportActionBar().hide();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                splashScreen.setKeepOnScreenCondition(new SplashScreen.KeepOnScreenCondition() {
+                    @Override
+                    public boolean shouldKeepOnScreen() {
+                        return false;
+                    }
+                });
+            }
+        }, 3000);
+        db = Database.getInstance(getApplicationContext());
+        int userCount = db.dao().getCount();
+        if (userCount > 0) {
+            biometricAuth();
+        } else {
+            Intent intent = new Intent(WhileAuth.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 
     public void biometricAuth(){

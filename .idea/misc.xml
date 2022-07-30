@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AppDev_Proj/PatientDemo/app/src/main/res/drawable/ic_manage_search.xml" value="0.155" />
         <entry key="..\:/AppDev_Proj/PatientDemo/app/src/main/res/layout/activity_while_auth.xml" value="0.20677083333333332" />
+        <entry key="..\:/AppDev_Proj/PatientDemo/app/src/main/res/layout/splash_screen.xml" value="0.20677083333333332" />
       </map>
     </option>
   </component>

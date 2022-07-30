@@ -13,4 +13,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.PatientDemo.starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenIconBackgroundColor">#FD15324C</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_manage_search</item>
+<!--        <item name="windowSplashScreenAnimationDuration">500</item>-->
+        <item name="postSplashScreenTheme">@style/Theme.PatientDemo</item>
+    </style>
 </resources>
